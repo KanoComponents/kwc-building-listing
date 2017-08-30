@@ -1,0 +1,34 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`kwc-building-listing`
+To display all of the step-by-step build challenges available to the user.
+
+@demo demo/index.html
+-->
+
+<dom-module id="kwc-building-listing">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'kwc-building-listing',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'kwc-building-listing',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
