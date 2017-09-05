@@ -1,4 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-spinner/paper-spinner-lite.html">
+<link rel="import" href="../kwc-challenge-card/kwc-challenge-card.html">
 
 <!--
 `kwc-building-listing`
@@ -8,27 +10,131 @@ To display all of the step-by-step build challenges available to the user.
 -->
 
 <dom-module id="kwc-building-listing">
-  <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <h2>Hello [[prop1]]!</h2>
-  </template>
+    <template>
+        <style>
+             :host {
+                --paper-spinner-color: var(--color-kano-orange);
+                --kwc-challenge-card-cover: {
+                    height: 176px;
+                }
+            }
 
-  <script>
-    Polymer({
+             :host * {
+                box-sizing: border-box;
+            }
 
-      is: 'kwc-building-listing',
+             :host *[hidden] {
+                display: none;
+            }
 
-      properties: {
-        prop1: {
-          type: String,
-          value: 'kwc-building-listing',
-        },
-      },
+             :host #pager {
+                @apply --layout-vertical;
+            }
 
-    });
-  </script>
+             :host .card-container {
+                @apply --layout-horizontal;
+                @apply --layout-wrap;
+                @apply --layout-center-justified;
+                margin: 24px 0;
+                position: relative;
+            }
+
+             :host kwc-challenge-card {
+                width: 184px;
+                margin: 0 12px 32px 12px;
+                cursor: pointer;
+            }
+
+             :host .h-line {
+                height: 1px;
+                background-color: var(--color-porcelain);
+            }
+
+             :host .loading {
+                @apply --layout-fit;
+                margin: auto;
+            }
+
+             :host .loading-label {
+                color: var(--color-abbey);
+                font-size: 24px;
+                font-weight: bold;
+                padding-bottom: 24px;
+                text-align: center;
+            }
+
+             :host paper-spinner-lite {
+                display: block;
+                margin: auto;
+            }
+        </style>
+        <div class="card-container">
+
+            <div class="loading" hidden$="[[!_challengesLoading]]">
+                <div class="loading-label">Loading...</div>
+                <paper-spinner-lite active="[[_challengesLoading]]"></paper-spinner-lite>
+            </div>
+
+            <template is="dom-repeat" items="[[challenges]]" as="challenge">
+                <kwc-challenge-card
+                    label="Challenge Card"
+                    img-url="[[challenge.image]]"
+                    title="[[challenge.title]]"
+                    challenge-id="[[challenge.slug]]"
+                    completed="[[_isCompleted(challenge, completedChallenges)]]"
+                    on-tap="_clickChallenge"
+                ></kwc-challenge-card>
+      
+            </template>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'kwc-building-listing',
+
+            properties: {
+                challenges: {
+                    type: Object,
+                    value: () => {
+                        return [];
+                    }
+                },
+                completedChallenges: {
+                    type: Object,
+                    value: () => {
+                        return {};
+                    }
+                },
+                _challengesLoading: {
+                    type: Boolean,
+                    computed: '_computeChallengesLoading(challenges, completedChallenges)'
+                }
+            },
+
+            _computeChallengesLoading(challenges, completedChallenges) {
+                /** TODO: Find a more elegant way of watching the loading status */
+                return challenges
+                    && challenges.length
+            },
+            _isCompleted(challenge, completedChallenges){
+                let completedList;
+
+                if (!challenge || !completedChallenges) {
+                    return false;
+                }
+                
+                completedList = completedChallenges[challenge.category];
+                return completedList.indexOf(challenge.slug) !== -1;
+            },
+            _clickChallenge(e) {
+                this.fire('build-challenge-click', {
+                    type: 'challenge',
+                    slug: `${e.model.challenge.slug}`
+                });
+            }
+
+        });
+    </script>
 </dom-module>

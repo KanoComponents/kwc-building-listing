@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
@@ -12,17 +13,191 @@
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../kwc-building-listing.html">
 
-    <style is="custom-style" include="demo-pages-shared-styles">
-    </style>
-  </head>
-  <body>
+    <custom-style>
+        <style is="custom-style" include="demo-pages-shared-styles"></style>
+    </custom-style>
+
+    <script>
+        window.KANO = window.KANO || {};
+        window.KANO.challenges = [{
+            "title": "Chatterbox",
+            "slug": "pixel_talking_mouth",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "dependencies": ["microphone"],
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        },
+        {
+            "title": "Virtual fireplace",
+            "slug": "pixel_fireplace",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        },
+        {
+            "title": "Critters!",
+            "slug": "pixel_critter",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        },
+        {
+            "title": "Roll the dice",
+            "slug": "pixel_dice",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "dependencies": ["microphone"],
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        },
+        {
+            "title": "Light wander",
+            "slug": "pixel_wandering",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        },
+        {
+            "title": "Weather station",
+            "slug": "pixel_weather",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        },
+        {
+            "title": "Shy light",
+            "slug": "pixel_shy_light",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard"
+            ]
+        },
+        {
+            "title": "The Aurora Borealis",
+            "slug": "pixel_aurora_borealis",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "dependencies": ["microphone"],
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        },
+        {
+            "title": "Sports news ticker",
+            "slug": "pixel_sports",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "dependencies": ["microphone"],
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        },
+        {
+            "title": "Egg timer",
+            "slug": "pixel_timer",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        },
+        {
+            "title": "A clock when you clap.",
+            "slug": "pixel_clap_clock",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        },
+        {
+            "title": "Shhhhh!",
+            "slug": "pixel_shhh",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        },
+        {
+            "title": "Color mix up",
+            "slug": "pixel_4",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        },
+        {
+            "title": "Dance, pixels, dance!",
+            "slug": "pixel_light_beats",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        },
+        {
+            "title": "Rainbow clock",
+            "slug": "pixel_rainbow_clock",
+            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg",
+            "category": "kano-code-challenges-pixel-basic",
+            "products": [
+                "lightboard",
+                "RPK"
+            ]
+        }];
+        window.KANO.completedChallenges = {
+            "kano-code-challenges-pixel-basic": [
+                "pixel_talking_mouth",
+                "pixel_timer"
+            ]
+        };
+
+        document.addEventListener('WebComponentsReady', () => {
+            var buildlist = document.getElementById('basic-list');
+            buildlist.challenges = KANO.challenges;
+            buildlist.completedChallenges = KANO.completedChallenges;
+        });
+    </script>
+
+</head>
+
+<body>
     <div class="vertical-section-container centered">
-      <h3>Basic kwc-building-listing demo</h3>
-      <demo-snippet>
-        <template>
-          <kwc-building-listing></kwc-building-listing>
-        </template>
-      </demo-snippet>
+        <h3>Basic kwc-building-listing demo</h3>
+        <demo-snippet>
+            <template>
+                <kwc-building-listing id="basic-list">
+                </kwc-building-listing>
+            </template>
+        </demo-snippet>
     </div>
-  </body>
+</body>
+
 </html>
