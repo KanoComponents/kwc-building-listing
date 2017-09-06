@@ -1,21 +1,19 @@
 # \<kwc-building-listing\>
 
-To display all of the step-by-step build challenges available to the user.
+## Purpose
+To display a list of step-by-step build challenges. This component also accepts an array of challenge ids to mark as completed.
 
-## Install the Polymer-CLI
+## Properties
+* challenges (Object): List of challenges to be displayed. 
+* completedChallenges (Array): List of challenge ids to mark as completed
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
-
-## Viewing Your Element
-
-```
-$ polymer serve
-```
+## Installation
+* Clone this repository.
+* Run `bower i`
+* Make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
 
 ## Running Tests
 
 ```
-$ polymer test
+$ polymer test --skip-plugin junit-reporter
 ```
-
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.

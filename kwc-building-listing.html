@@ -19,19 +19,19 @@ To display all of the step-by-step build challenges available to the user.
                 }
             }
 
-             :host * {
+             * {
                 box-sizing: border-box;
             }
 
-             :host *[hidden] {
+             *[hidden] {
                 display: none;
             }
 
-             :host #pager {
+             #pager {
                 @apply --layout-vertical;
             }
 
-             :host .card-container {
+             .card-container {
                 @apply --layout-horizontal;
                 @apply --layout-wrap;
                 @apply --layout-center-justified;
@@ -39,23 +39,23 @@ To display all of the step-by-step build challenges available to the user.
                 position: relative;
             }
 
-             :host kwc-challenge-card {
+             kwc-challenge-card {
                 width: 184px;
                 margin: 0 12px 32px 12px;
                 cursor: pointer;
             }
 
-             :host .h-line {
+             .h-line {
                 height: 1px;
                 background-color: var(--color-porcelain);
             }
 
-             :host .loading {
+             .loading {
                 @apply --layout-fit;
                 margin: auto;
             }
 
-             :host .loading-label {
+             .loading-label {
                 color: var(--color-abbey);
                 font-size: 24px;
                 font-weight: bold;
@@ -63,7 +63,7 @@ To display all of the step-by-step build challenges available to the user.
                 text-align: center;
             }
 
-             :host paper-spinner-lite {
+             paper-spinner-lite {
                 display: block;
                 margin: auto;
             }
@@ -95,18 +95,27 @@ To display all of the step-by-step build challenges available to the user.
             is: 'kwc-building-listing',
 
             properties: {
+                /*
+                * List of challenges to be displayed
+                */
                 challenges: {
                     type: Object,
                     value: () => {
                         return [];
                     }
                 },
+                /*
+                * List of completed challenge ids
+                */
                 completedChallenges: {
                     type: Object,
                     value: () => {
-                        return {};
+                        return [];
                     }
                 },
+                /*
+                * Computed property to decide to show loading spinner or not.
+                */
                 _challengesLoading: {
                     type: Boolean,
                     computed: '_computeChallengesLoading(challenges, completedChallenges)'
@@ -115,8 +124,7 @@ To display all of the step-by-step build challenges available to the user.
 
             _computeChallengesLoading(challenges, completedChallenges) {
                 /** TODO: Find a more elegant way of watching the loading status */
-                return challenges
-                    && challenges.length
+                return !(challenges && challenges.length);
             },
             _isCompleted(challenge, completedChallenges){
                 if (!challenge || !completedChallenges) {
