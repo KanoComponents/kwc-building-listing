@@ -26,76 +26,41 @@
         {
             "title": "Virtual fireplace",
             "slug": "pixel_fireplace",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
+            "image": "https://rfclipart.com/image/thumbnail/a8-2f-da/symbolic-stone-fireplace-Download-Royalty-free-Vector-File-EPS-32405.jpg"
         },
         {
             "title": "Critters!",
             "slug": "pixel_critter",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
+            "image": "https://i.pinimg.com/736x/ab/24/e7/ab24e7ed83e6d4523f10c790bd6ffc9b--zoo-animals-wild-animals.jpg"
         },
         {
             "title": "Roll the dice",
             "slug": "pixel_dice",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
+            "image": "https://merribellmusic.files.wordpress.com/2015/03/black-and-white-dice-clipart-xcgk7kpmi.png?w=150&h=150"
         },
         {
             "title": "Light wander",
             "slug": "pixel_wandering",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
+            "image": "http://images.clipartpanda.com/light-bulb-clip-art-light-bulb-clip-art-1-150x150.jpg"
         },
         {
             "title": "Weather station",
             "slug": "pixel_weather",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
+            "image": "https://simpleclipart.com/image/thumbnail/cb-fb-48/cloud-and-sun-weather-icon-Download-Royalty-free-Vector-File-EPS-52116.jpg"
         },
         {
             "title": "Shy light",
             "slug": "pixel_shy_light",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
+            "image": "http://l.thumbs.canstockphoto.com/canstock0735539.jpg"
         },
         {
             "title": "The Aurora Borealis",
             "slug": "pixel_aurora_borealis",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
-        },
-        {
-            "title": "Sports news ticker",
-            "slug": "pixel_sports",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
-        },
-        {
-            "title": "Egg timer",
-            "slug": "pixel_timer",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
-        },
-        {
-            "title": "A clock when you clap.",
-            "slug": "pixel_clap_clock",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
-        },
-        {
-            "title": "Shhhhh!",
-            "slug": "pixel_shhh",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
-        },
-        {
-            "title": "Color mix up",
-            "slug": "pixel_4",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
-        },
-        {
-            "title": "Dance, pixels, dance!",
-            "slug": "pixel_light_beats",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
-        },
-        {
-            "title": "Rainbow clock",
-            "slug": "pixel_rainbow_clock",
-            "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
-        }];
-        var completedChallenges = [
+            "image": "https://rfclipart.com/image/thumbnail/f6-68-b2/arctic-glacier-landscape-against-full-moon-in-the-sky-Download-Royalty-free-Vector-File-EPS-88824.jpg"
+        }],
+        completedChallenges = [
             "pixel_talking_mouth",
-            "pixel_timer"
+            "pixel_dice"
         ];
 
         document.addEventListener('WebComponentsReady', () => {
@@ -109,7 +74,17 @@
 
 <body>
     <div class="vertical-section-container centered">
-        <h3>Basic kwc-building-listing demo</h3>
+        <h3>Empty kwc-building-listing</h3>
+        <demo-snippet>
+            <template>
+                <kwc-building-listing id="empty-list">
+                </kwc-building-listing>
+            </template>
+        </demo-snippet>
+    </div>
+
+    <div style="max-width: 800px; margin: auto;" class="vertical-section-container">
+        <h3>kwc-building-listing</h3>
         <demo-snippet>
             <template>
                 <kwc-building-listing id="basic-list">
@@ -117,6 +92,7 @@
             </template>
         </demo-snippet>
     </div>
+
 </body>
 
 </html>
