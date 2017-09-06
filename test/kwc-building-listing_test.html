@@ -10,6 +10,53 @@
     <script src="../../web-component-tester/browser.js"></script>
 
     <link rel="import" href="../kwc-building-listing.html">
+
+    <script>
+            var challenges = [{
+                "title": "Chatterbox",
+                "slug": "pixel_talking_mouth",
+                "image": "https://www.tonymacx86.com/data/avatars/l/1342/1342909.jpg"
+            },
+            {
+                "title": "Virtual fireplace",
+                "slug": "pixel_fireplace",
+                "image": "https://rfclipart.com/image/thumbnail/a8-2f-da/symbolic-stone-fireplace-Download-Royalty-free-Vector-File-EPS-32405.jpg"
+            },
+            {
+                "title": "Critters!",
+                "slug": "pixel_critter",
+                "image": "https://i.pinimg.com/736x/ab/24/e7/ab24e7ed83e6d4523f10c790bd6ffc9b--zoo-animals-wild-animals.jpg"
+            },
+            {
+                "title": "Roll the dice",
+                "slug": "pixel_dice",
+                "image": "https://merribellmusic.files.wordpress.com/2015/03/black-and-white-dice-clipart-xcgk7kpmi.png?w=150&h=150"
+            },
+            {
+                "title": "Light wander",
+                "slug": "pixel_wandering",
+                "image": "http://images.clipartpanda.com/light-bulb-clip-art-light-bulb-clip-art-1-150x150.jpg"
+            },
+            {
+                "title": "Weather station",
+                "slug": "pixel_weather",
+                "image": "https://simpleclipart.com/image/thumbnail/cb-fb-48/cloud-and-sun-weather-icon-Download-Royalty-free-Vector-File-EPS-52116.jpg"
+            },
+            {
+                "title": "Shy light",
+                "slug": "pixel_shy_light",
+                "image": "http://l.thumbs.canstockphoto.com/canstock0735539.jpg"
+            },
+            {
+                "title": "The Aurora Borealis",
+                "slug": "pixel_aurora_borealis",
+                "image": "https://rfclipart.com/image/thumbnail/f6-68-b2/arctic-glacier-landscape-against-full-moon-in-the-sky-Download-Royalty-free-Vector-File-EPS-88824.jpg"
+            }],
+            completedChallenges = [
+                "pixel_talking_mouth",
+                "pixel_dice"
+            ];
+        </script>
   </head>
   <body>
     <test-fixture id="basic">
@@ -25,6 +72,56 @@
           assert.equal(element.is, 'kwc-building-listing');
         });
       });
+
+      suite('ready', function () {
+            var element;
+            setup(function () {
+                element = fixture('basic');
+                element.challenges = challenges;
+            });
+            test('instantiating the element works', function () {
+                assert.equal(element.is, 'kwc-building-listing');
+            });
+            test('no challenge is showing the completed icon', function (done) {
+                flush(function () {
+                    var iconElms = Polymer.dom(element.root).querySelectorAll('iron-icon');
+                    assert.lengthOf(iconElms, 0);
+                    done();
+                });
+            });
+        });
+
+        suite('completed-challenges', function () {
+            var element;
+            setup(function () {
+                element = fixture('basic');
+                element.challenges = challenges;
+                element.completedChallenges = completedChallenges;
+            });
+            test('instantiating the element works', function () {
+                assert.equal(element.is, 'kwc-building-listing');
+            });
+            test('A challenge card is shown for each challenge in the list', function (done) {
+                flush(function () {
+                    var challengeCount = challenges.length,
+                    childCount = Polymer.dom(element.root).querySelectorAll('kwc-challenge-card').length;
+                    assert.equal(challengeCount, childCount);
+                    done();
+                });
+            });
+            test('There are the same number of cards with completed icon as there are ids in completedChallenges list', function (done) {
+                flush(function () {
+                    var completedChallengeCount = completedChallenges.length,                    
+                    cardElms = Polymer.dom(element.root).querySelectorAll('kwc-challenge-card'),
+                    iconElmsCount = 0;
+                    cardElms.forEach(function(card){
+                        iconElmsCount += Polymer.dom(card.root).querySelectorAll('iron-icon').length;
+                    });
+                    assert.equal(iconElmsCount, completedChallengeCount);
+                    done();
+                });
+            });
+        });
     </script>
   </body>
 </html>
