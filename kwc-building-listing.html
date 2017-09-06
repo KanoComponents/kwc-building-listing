@@ -119,14 +119,11 @@ To display all of the step-by-step build challenges available to the user.
                     && challenges.length
             },
             _isCompleted(challenge, completedChallenges){
-                let completedList;
-
                 if (!challenge || !completedChallenges) {
                     return false;
                 }
                 
-                completedList = completedChallenges[challenge.category];
-                return completedList.indexOf(challenge.slug) !== -1;
+                return completedChallenges.indexOf(challenge.slug) !== -1;
             },
             _clickChallenge(e) {
                 this.fire('build-challenge-click', {
