@@ -121,6 +121,21 @@
                     done();
                 });
             });
+            test('Only challenges whose ids are in the competedChallenges list show the completed icon', function (done) {
+                flush(function () {
+                    var cardElms = Polymer.dom(element.root).querySelectorAll('kwc-challenge-card'),
+                    iconError = false,
+                    elmCount = cardElms.length;
+                    for(var i=0; i<elmCount; i++){
+                        if (Polymer.dom(cardElms[i].root).querySelectorAll('iron-icon').length){
+                            iconError = completedChallenges.indexOf(cardElms[i].challengeId) === -1;
+                        }
+                        if (iconError) break;
+                    }
+                    assert.isNotTrue(iconError);
+                    done();
+                });
+            });
         });
     </script>
   </body>

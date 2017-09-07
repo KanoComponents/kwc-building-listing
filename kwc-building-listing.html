@@ -12,26 +12,26 @@ To display all of the step-by-step build challenges available to the user.
 <dom-module id="kwc-building-listing">
     <template>
         <style>
-             :host {
+            :host {
                 --paper-spinner-color: var(--color-kano-orange);
                 --kwc-challenge-card-cover: {
                     height: 176px;
                 }
             }
 
-             * {
+            * {
                 box-sizing: border-box;
             }
 
-             *[hidden] {
+            *[hidden] {
                 display: none;
             }
 
-             #pager {
+            #pager {
                 @apply --layout-vertical;
             }
 
-             .card-container {
+            .card-container {
                 @apply --layout-horizontal;
                 @apply --layout-wrap;
                 @apply --layout-center-justified;
@@ -39,23 +39,23 @@ To display all of the step-by-step build challenges available to the user.
                 position: relative;
             }
 
-             kwc-challenge-card {
+            kwc-challenge-card {
                 width: 184px;
                 margin: 0 12px 32px 12px;
                 cursor: pointer;
             }
 
-             .h-line {
+            .h-line {
                 height: 1px;
                 background-color: var(--color-porcelain);
             }
 
-             .loading {
+            .loading {
                 @apply --layout-fit;
                 margin: auto;
             }
 
-             .loading-label {
+            .loading-label {
                 color: var(--color-abbey);
                 font-size: 24px;
                 font-weight: bold;
@@ -63,7 +63,7 @@ To display all of the step-by-step build challenges available to the user.
                 text-align: center;
             }
 
-             paper-spinner-lite {
+            paper-spinner-lite {
                 display: block;
                 margin: auto;
             }
@@ -95,27 +95,27 @@ To display all of the step-by-step build challenges available to the user.
             is: 'kwc-building-listing',
 
             properties: {
-                /*
-                * List of challenges to be displayed
-                */
+                /**
+                 * List of challenges to be displayed
+                 */
                 challenges: {
                     type: Object,
                     value: () => {
                         return [];
                     }
                 },
-                /*
-                * List of completed challenge ids
-                */
+                /**
+                 * List of completed challenge ids
+                 */
                 completedChallenges: {
                     type: Object,
                     value: () => {
                         return [];
                     }
                 },
-                /*
-                * Computed property to decide to show loading spinner or not.
-                */
+                /**
+                 * Computed property to decide to show loading spinner or not.
+                 */
                 _challengesLoading: {
                     type: Boolean,
                     computed: '_computeChallengesLoading(challenges, completedChallenges)'
