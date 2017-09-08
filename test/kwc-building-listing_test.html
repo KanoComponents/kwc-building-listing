@@ -89,6 +89,20 @@
                     done();
                 });
             });
+            test('on click event returns the challenge id of the challenge card that was clicked', function (done) {
+                flush(function () {
+                    var cardElm = Polymer.dom(element.root).querySelector('kwc-challenge-card'),
+                        clickDetailValue;
+                    element.addEventListener('build-challenge-click', function(e){
+                        clickDetailValue = e.detail.challengeId;
+                        assert.equal(clickDetailValue, cardElm.challengeId);
+                        done();
+                    }.bind(this));
+
+                    cardElm.click();
+
+                });
+            });
         });
 
         suite('completed-challenges', function () {
