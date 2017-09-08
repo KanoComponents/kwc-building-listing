@@ -88,6 +88,3 @@ addEventListener('build-challenge-click', function(e){
 ```
 $ polymer test --skip-plugin junit-reporter
 ```
-
-## TODO
-Update demo cover images to real challenge image examples (possible stored in cloud repo.)
