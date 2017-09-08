@@ -136,7 +136,7 @@ To display all of the step-by-step build challenges available to the user.
             _clickChallenge(e) {
                 this.fire('build-challenge-click', {
                     type: 'challenge',
-                    slug: `${e.model.challenge.slug}`
+                    challengeId: `${e.model.challenge.slug}`
                 });
             }
 
