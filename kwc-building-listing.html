@@ -1,6 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-spinner/paper-spinner-lite.html">
 <link rel="import" href="../kwc-challenge-card/kwc-challenge-card.html">
+<link rel="import" href="../kwc-style/kwc-style.html">
 
 <!--
 `kwc-building-listing`
@@ -17,6 +18,7 @@ To display all of the step-by-step build challenges available to the user.
                 --kwc-challenge-card-cover: {
                     height: 176px;
                 }
+                font-family: var(--font-body);
             }
 
             * {
@@ -84,7 +86,7 @@ To display all of the step-by-step build challenges available to the user.
                     completed="[[_isCompleted(challenge, completedChallenges)]]"
                     on-tap="_clickChallenge"
                 ></kwc-challenge-card>
-      
+
             </template>
         </div>
     </template>
@@ -130,7 +132,7 @@ To display all of the step-by-step build challenges available to the user.
                 if (!challenge || !completedChallenges) {
                     return false;
                 }
-                
+
                 return completedChallenges.indexOf(challenge.slug) !== -1;
             },
             _clickChallenge(e) {
