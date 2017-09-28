@@ -4,7 +4,7 @@
 To display a list of step-by-step build challenges. This component also accepts an array of challenge ids to mark as completed.
 
 ## Properties
-* challenges (Object): List of challenges to be displayed. 
+* challenges (Object): List of challenges to be displayed.
 * completedChallenges (Array): List of challenge ids to mark as completed
 
 The element properties are have the shape (specified using [json schema](https://spacetelescope.github.io/understanding-json-schema/)):
@@ -56,7 +56,7 @@ The element properties are have the shape (specified using [json schema](https:/
 ]
 ```
 ## Events
-This component will fire a custom event `build-challenge-click` intitated by a click or tap event on any of the challenge cards in the displayed list. The event is passed the following detail:
+This component will fire a custom event `open-kano-code` intitated by a click or tap event on any of the challenge cards in the displayed list. The event is passed the following detail:
 ```js
 {
     type: 'object',
@@ -72,7 +72,7 @@ This component will fire a custom event `build-challenge-click` intitated by a c
 ```
 The challengeId can then be accessed in any listener implementation on the event detail property.
 ```js
-addEventListener('build-challenge-click', function(e){
+addEventListener('open-kano-code', function(e){
     console.log(e.detail);
 }
 // e.g. {"type": "challenge", "challengeId: "pixel_talking_mouth"}

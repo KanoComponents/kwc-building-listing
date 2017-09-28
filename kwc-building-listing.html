@@ -136,9 +136,9 @@ To display all of the step-by-step build challenges available to the user.
                 return completedChallenges.indexOf(challenge.slug) !== -1;
             },
             _clickChallenge(e) {
-                this.fire('build-challenge-click', {
+                this.fire('open-kano-code', {
                     type: 'challenge',
-                    challengeId: `${e.model.challenge.slug}`
+                    slug: `${e.model.challenge.slug}`
                 });
             }
 
