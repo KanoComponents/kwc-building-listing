@@ -37,14 +37,40 @@ To display all of the step-by-step build challenges available to the user.
                 @apply --layout-horizontal;
                 @apply --layout-wrap;
                 @apply --layout-center-justified;
-                margin: 24px 0;
+                margin: 24px -12px;
                 position: relative;
             }
 
             kwc-challenge-card {
-                width: 184px;
-                margin: 0 12px 32px 12px;
+                box-sizing: border-box;
                 cursor: pointer;
+                margin: 0 0 24px 0;
+                padding: 0 12px;
+            }
+
+            @media all and (max-width: 480px) {
+                kwc-challenge-card {
+                    max-width: 220px;
+                    width: 100%;
+                }
+            }
+
+            @media all and (min-width: 481px) and (max-width: 620px) {
+                kwc-challenge-card {
+                    width: 50%;
+                }
+            }
+
+            @media all and (min-width: 621px) and (max-width: 720px) {
+                kwc-challenge-card {
+                    width: 33%;
+                }
+            }
+
+            @media all and (min-width: 721px) {
+                kwc-challenge-card {
+                    width: 25%;
+                }
             }
 
             .h-line {
